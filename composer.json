@@ -1,6 +1,6 @@
 {
   "name": "victor78/yii2-sms-reg",
-  "description": "Компонент для взаиомдействия с API sms-reg.com",
+  "description": "Компонент для взаимодействия с API sms-reg.com",
   "type": "yii2-extension",
   "minimum-stability": "stable",
   "version": "1.0.0",
