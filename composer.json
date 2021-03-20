@@ -3,7 +3,7 @@
   "description": "Компонент для взаимодействия с API sms-reg.com",
   "type": "yii2-extension",
   "minimum-stability": "stable",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "keywords": ["sms-reg", "sdk", "api"],
   "license": "Apache-2.0",
   "authors": [
