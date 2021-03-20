@@ -13,8 +13,6 @@ class RequestorTest extends PHPUnit_Framework_TestCase
     {
         $requestor = new Requestor([
             'api_key' => self::$api_key,
-//            'validator_class' => \Victor78\SmsReg\Validation\EmptyValidator::class,
-            'validator' => \Victor78\SmsReg\Validation\EmptyValidator::class,
         ]);
         $response = $requestor->getBalance();
         $this->assertInternalType("array", $response);

@@ -3,10 +3,8 @@
 
 namespace Victor78\SmsRegComponent;
 
-use Victor78\SmsReg\Validation\ValidatorInterface;
 use Victor78\SmsRegComponent\Exceptions\ValidationException;
 use yii\base\Component;
-use yii\BaseYii;
 
 /**
  * Class Requestor
@@ -30,8 +28,9 @@ class Requestor extends Component
     public $api_key;
     /** @var string optional */
     public $dev_key;
-    /** @var array config to create validator, optional */
-    public $validator;
+
+    /** @var bool  */
+    public $enabledValidation = true;
 
     /** @var \Victor78\SmsReg\Requestor */
     private $requestor;
@@ -52,39 +51,26 @@ class Requestor extends Component
      * @param array  $arguments
      *
      * @return mixed
-     * @throws ValidationException
      */
     public function __call($name, $arguments)
     {
         $requestor = $this->getRequestor();
-        if (!method_exists($requestor, $name))
-        {
-            throw new ValidationException("Method '$name' does not exist!'");
-        }
 
         return call_user_func_array([$requestor, $name], $arguments);
     }
 
     /**
      * @return Requestor
-     * @throws \yii\base\InvalidConfigException
      */
     private function initRequestor(): self
     {
-        $validator = null;
-        if ($this->validator)
-        {
-            /** @var ValidatorInterface $validator */
-            $validator = BaseYii::createObject($this->validator);
-        }
-        $requestor = new \Victor78\SmsReg\Requestor($this->api_key, $this->dev_key, $validator);
+        $requestor = new \Victor78\SmsReg\Requestor($this->api_key, $this->dev_key, $this->enabledValidation);
         $this->setRequestor($requestor);
         return $this;
     }
 
     /**
      * @return \Victor78\SmsReg\Requestor
-     * @throws \yii\base\InvalidConfigException
      */
     private function getRequestor(): \Victor78\SmsReg\Requestor
     {
