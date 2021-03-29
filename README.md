@@ -19,7 +19,6 @@ return [
             'class' => Victor78\SmsRegComponent\Requestor::class,
             'api_key' => 'xxxxxxxxxxxxxxxxxxxx',
             'dev_key' => 'xxxxxxxxxxxxxxxxxxxx', //опционально
-            'validator' => \Victor78\SmsReg\Validation\EmptyValidator::class, //опционально - если нужно отключить превалидацию
         ],
     ]
 ];
